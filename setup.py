@@ -77,6 +77,7 @@ def get_version():
         f = open('version.txt','r')
         git_describe = f.readline()
         f.close()        
+        print("1 " + git_describe)
     else: 
         try:
             r = git.repo.Repo(here)
@@ -88,10 +89,12 @@ def get_version():
             f = open('src/rdplot/version.txt','w')
             f.write(git_describe)
             f.close()
+            print("2 " + git_describe)
         except (git.InvalidGitRepositoryError):
             f = open('version.txt','r')
             git_describe = f.readline()
             f.close()
+            print("3 " + git_describe)
 
     version = None
     split_describe = git_describe.split('-')
